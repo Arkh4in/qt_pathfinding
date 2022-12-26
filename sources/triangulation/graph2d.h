@@ -1,16 +1,21 @@
 #pragma once
-#include <QPointF>
 #include <QList>
-#include "triangle2d.h"
+
+class Triangle2D;
+class Edge2D;
+class QRect;
 
 class Graph2D
 {
 private: 
-    QList<Triangle2D> triangles;
+    QRect m_Boundaries;
+
+    QList<Triangle2D> m_Triangles;
+    QList<Edge2D> m_ConstraintedEdges;
 
 public:
-    void AddObstacleAABB(QPointF a, QPointF b);
+    void AddRectangleObstacle(QRect obstacle);
     void Triangulate();
-
+    void SetBoundaries();
 };
 
