@@ -86,18 +86,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="menumodel.cpp">
-      <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">input</DynamicSource>
-      <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename).moc</QtMocFileName>
-      <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Release|x64'">input</DynamicSource>
-      <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).moc</QtMocFileName>
-    </ClCompile>
-    <QtRcc Include="qml.qrc" />
-    <None Include="main.qml" />
+    <QtRcc Include="ui\qml.qrc" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="menumodel.h" />
+    <QtMoc Include="ui\menumodel.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="triangulation\triangle2d.cpp" />
+    <ClCompile Include="triangulation\edge2d.cpp" />
+    <ClCompile Include="triangulation\graph2d.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="ui\menumodel.cpp" />
+    <ClCompile Include="triangulation\vertex2d.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ui\main.qml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="triangulation\triangle2d.h" />
+    <ClInclude Include="triangulation\edge2d.h" />
+    <ClInclude Include="triangulation\graph2d.h" />
+    <ClInclude Include="triangulation\vertex2d.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

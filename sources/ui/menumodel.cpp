@@ -1,8 +1,8 @@
 #pragma once
 #include "menumodel.h"
 
-void MenuModel::addToCounter()
+void MenuModel::AddToCounter()
 {
     m_Counter++;
-    counterChanged();
+    CounterChanged();
 }

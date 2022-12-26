@@ -1,7 +1,7 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 
-#include "menumodel.h"
+#include "ui/menumodel.h"
 
 int main(int argc, char *argv[])
 {

@@ -9,12 +9,12 @@ private:
     int m_Counter = 0;
 
 public:
-    Q_PROPERTY(int counter MEMBER m_Counter NOTIFY counterChanged)
+    Q_PROPERTY(int Counter MEMBER m_Counter NOTIFY CounterChanged)
 
 signals:
-    void counterChanged();
+    void CounterChanged();
 
 public slots:
-    void addToCounter();
+    void AddToCounter();
 };
 

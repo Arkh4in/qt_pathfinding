@@ -9,6 +9,7 @@ ApplicationWindow {
     width: 640
     height: 480
     title: qsTr("Hello World")
+    color: white
 
     MenuModel
     {
@@ -24,12 +25,13 @@ ApplicationWindow {
             Button
             {
                 text: qsTr("Add")
-                onClicked: menu.addToCounter()
+                onClicked: menu.AddToCounter()
             }
 
             Text
             {
-                text: menu.counter
+                text: menu.Counter
+                color: black
             }
         }
     }
