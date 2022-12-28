@@ -2,9 +2,16 @@
 #include <QQmlApplicationEngine>
 
 #include "ui/menumodel.h"
+#include "triangulation/triangle2d.h"
 
 int main(int argc, char *argv[])
 {
+    Triangle2D tri;
+    tri.GetCircumscribedCircle();
+
+
+
+
 #if defined(Q_OS_WIN)
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 #endif

@@ -35,6 +35,7 @@
     <ClCompile Include="triangulation\vertex2d.cpp" />
     <ClCompile Include="triangulation\edge2d.cpp" />
     <ClCompile Include="triangulation\triangle2d.cpp" />
+    <ClCompile Include="triangulation\circle2d.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ui\main.qml" />
@@ -50,6 +51,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="triangulation\triangle2d.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="triangulation\circle2d.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
