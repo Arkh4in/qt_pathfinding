@@ -9,11 +9,13 @@ class Triangle2D
 public: 
     Triangle2D(QPointF a, QPointF b, QPointF c);
 
-    QPointF GetA() { return m_Points[0]; }
-    QPointF GetB() { return m_Points[1]; }
-    QPointF GetC() { return m_Points[2]; }
+    QPointF GetA() const { return m_Points[0]; }
+    QPointF GetB() const { return m_Points[1]; }
+    QPointF GetC() const { return m_Points[2]; }
 
-    //bool IsContaining(QPointF& const point)const;
+    bool Contains(const Edge2D& edge) const;
+    bool Contains(const QPointF& point) const;
+
     bool CircumscribeCircleContains(const QPointF& point)const;
 
 private : 
@@ -23,8 +25,8 @@ private :
     float m_CircumscribedSquaredRadius = 0;
     QPointF m_CircumscribedCircleCenter;
     
-    QPointF GetCircumscribedCircleCenter();
-    QPointF GetLinesIntersection(Line l1, Line l2);
-    Line GetNormalLineFromPoints(QPointF p1, QPointF p2);
+    QPointF GetCircumscribedCircleCenter() const;
+    QPointF GetLinesIntersection(const Line l1, const Line l2) const;
+    Line GetNormalLineFromPoints(const QPointF p1, const QPointF p2) const;
 };
 
