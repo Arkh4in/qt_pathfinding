@@ -11,9 +11,9 @@ struct Line
 
 QPointF Triangle2D::GetCircumscribedCircleCenter() const
 {
-    QPointF a =m_A;
-    QPointF b =m_B;
-    QPointF c =m_C;
+    QPointF a = m_A;
+    QPointF b = m_B;
+    QPointF c = m_C;
 
     Line n1, n2;
 
@@ -67,9 +67,9 @@ Line Triangle2D::GetNormalLineFromPoints(const QPointF &p1, const QPointF &p2) c
 
 Triangle2D::Triangle2D(QPointF a, QPointF b, QPointF c)
 {
-   m_A = a;
-   m_B = b;
-   m_C = c;
+    m_A = a;
+    m_B = b;
+    m_C = c;
 
     m_AB = Edge2D(a, b);
     m_BC = Edge2D(b, c);
