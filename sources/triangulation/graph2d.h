@@ -2,8 +2,6 @@
 #include <QList>
 #include <QStack>
 
-#include "circle2d.h"
-
 class Triangle2D;
 class Edge2D;
 class QRect;

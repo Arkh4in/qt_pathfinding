@@ -1,3 +1,5 @@
+#include <stdexcept>
+
 #include "triangle2d.h"
 
 struct Line 
@@ -17,42 +19,39 @@ QPointF Triangle2D::GetCircumscribedCircleCenter()
     QPointF b = m_Points[1];
     QPointF c = m_Points[2];
 
-    Line normal1 = GetNormalLineFromPoints(a, b);
-    Line normal2 = GetNormalLineFromPoints(b, c);
+    Line n1, n2;
 
-    QPointF center;
-    if (!TryGetLinesIntersection(normal1, normal2, center))
+    if (a.y() != b.y() && b.y() != c.y())
     {
-        return QPointF();
+        n1 = GetNormalLineFromPoints(a, b);
+        n2 = GetNormalLineFromPoints(b, c);
     }
-    return center;
+    else if(a.y() == b.y())
+    {
+        n1 = GetNormalLineFromPoints(a, c);
+        n2 = GetNormalLineFromPoints(b, c);
+    }
+    else //if (b.y() == c.y())
+    {
+        n1 = GetNormalLineFromPoints(a, b);
+        n2 = GetNormalLineFromPoints(a, c);
+    }
+
+    return GetLinesIntersection(n1, n2);
 }
 
-bool Triangle2D::TryGetLinesIntersection(Line l1, Line l2, QPointF& intersection)
+QPointF Triangle2D::GetLinesIntersection(Line l1, Line l2)
 {
     //Check for parallel lines
     if (l1.a == l2.a)
-        return false;
+        throw std::invalid_argument("Cant find intersection for 2 parallel lines");
 
     float a = l1.a - l2.a;
     float b = l1.b - l2.b;
     
-    intersection.setX(-b/a);
-    intersection.setY(l1.a * intersection.x() + l1.b);
-
-    return true;
+    float x = -b / a;
+    return QPointF(x, l1.a * x + l1.b);
 }
-
-//Line Triangle2D::GetLineFromPoints(QPoint p1, QPoint p2)
-//{
-//    Line l;
-//    float dx = p2.x() - p1.x();
-//    float dy = p2.y() - p1.y();
-//
-//    l.a = dx / dy;
-//    l.b = p1.y() - (l.a * p1.x());
-//    return l;
-//}
 
 Line Triangle2D::GetNormalLineFromPoints(QPointF p1, QPointF p2)
 {
@@ -76,23 +75,22 @@ Triangle2D::Triangle2D(QPointF a, QPointF b, QPointF c)
     m_Points[0] = a;
     m_Points[1] = b;
     m_Points[2] = c;
-}
-
-Circle2D Triangle2D::GetCircumscribedCircle()
-{
-    QPointF center = GetCircumscribedCircleCenter();
-
-    QPointF centerToVertex = center - m_Edges[0].from;
+    m_CircumscribedCircleCenter = GetCircumscribedCircleCenter();
     
-    float dist = std::sqrt(std::pow(centerToVertex.x(), 2) +
-        std::pow(centerToVertex.y(), 2));
+    QPointF radiusVector = m_CircumscribedCircleCenter - m_Points[0];
 
-    return Circle2D(center, dist);
+    m_CircumscribedSquaredRadius = radiusVector.x() * radiusVector.x() + radiusVector.y() * radiusVector.y();
 }
 
-bool Triangle2D::IsContaining(QPointF& const point) const
+//bool Triangle2D::IsContaining(QPointF& const point) const
+//{
+//    return(a == point ||
+//        b == point ||
+//        c == point);
+//}
+
+bool Triangle2D::CircumscribeCircleContains(const QPointF& point) const
 {
-    return(a == point ||
-        b == point ||
-        c == point);
+    QPointF radiusVector = m_CircumscribedCircleCenter - point;
+    return radiusVector.x() * radiusVector.x() + radiusVector.y() * radiusVector.y() <= m_CircumscribedSquaredRadius; //compare squared dist
 }
