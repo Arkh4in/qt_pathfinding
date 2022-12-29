@@ -2,6 +2,8 @@
 #include <QList>
 #include <QStack>
 
+#include "triangle2d.h"
+
 class Triangle2D;
 class Edge2D;
 class QRect;
@@ -19,12 +21,14 @@ private:
 
     void InitTriangulation();
     void RemoveSuperTriangle();
+    bool IsEdgeSharedWithBadTriangle(QList<Triangle2D>& triangles, Edge2D edge);
 
 public:
+    Graph2D(QRect boundaries);
+
     void AddRectangleObstacle(QRect obstacle);
     void AddVertex(QPointF vertex);
 
     void Triangulate();
-    void SetBoundaries(QRect boundaries);
 };
 

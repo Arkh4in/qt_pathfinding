@@ -11,9 +11,9 @@ struct Line
 
 QPointF Triangle2D::GetCircumscribedCircleCenter() const
 {
-    QPointF a = m_Points[0];
-    QPointF b = m_Points[1];
-    QPointF c = m_Points[2];
+    QPointF a =m_A;
+    QPointF b =m_B;
+    QPointF c =m_C;
 
     Line n1, n2;
 
@@ -36,7 +36,7 @@ QPointF Triangle2D::GetCircumscribedCircleCenter() const
     return GetLinesIntersection(n1, n2);
 }
 
-QPointF Triangle2D::GetLinesIntersection(const Line l1, const Line l2) const
+QPointF Triangle2D::GetLinesIntersection(const Line &l1, const Line &l2) const
 {
     //Check for parallel lines
     if (l1.a == l2.a)
@@ -49,7 +49,7 @@ QPointF Triangle2D::GetLinesIntersection(const Line l1, const Line l2) const
     return QPointF(x, l1.a * x + l1.b);
 }
 
-Line Triangle2D::GetNormalLineFromPoints(const QPointF p1, const QPointF p2) const
+Line Triangle2D::GetNormalLineFromPoints(const QPointF &p1, const QPointF &p2) const
 {
     Line l;
     float dx = p2.x() - p1.x();
@@ -67,34 +67,34 @@ Line Triangle2D::GetNormalLineFromPoints(const QPointF p1, const QPointF p2) con
 
 Triangle2D::Triangle2D(QPointF a, QPointF b, QPointF c)
 {
-    m_Points[0] = a;
-    m_Points[1] = b;
-    m_Points[2] = c;
+   m_A = a;
+   m_B = b;
+   m_C = c;
 
-    m_Edges[0] = Edge2D(a, b);
-    m_Edges[1] = Edge2D(b, c);
-    m_Edges[2] = Edge2D(c, a);
+    m_AB = Edge2D(a, b);
+    m_BC = Edge2D(b, c);
+    m_CA = Edge2D(c, a);
 
 
     m_CircumscribedCircleCenter = GetCircumscribedCircleCenter();
     
-    QPointF radiusVector = m_CircumscribedCircleCenter - m_Points[0];
+    QPointF radiusVector = m_CircumscribedCircleCenter -m_A;
 
     m_CircumscribedSquaredRadius = radiusVector.x() * radiusVector.x() + radiusVector.y() * radiusVector.y();
 }
 
 bool Triangle2D::Contains(const Edge2D& edge) const
 {
-    return(m_Edges[0] == edge ||
-        m_Edges[1] == edge ||
-        m_Edges[2] == edge);
+    return(m_AB == edge ||
+        m_BC == edge ||
+        m_CA == edge);
 }
 
 bool Triangle2D::Contains(const QPointF& point) const
 {
-    return(m_Points[0] == point ||
-        m_Points[1] == point ||
-        m_Points[2] == point);
+    return(m_A == point ||
+       m_B == point ||
+       m_C == point);
 }
 
 bool Triangle2D::CircumscribeCircleContains(const QPointF& point) const
