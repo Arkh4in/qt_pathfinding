@@ -4,13 +4,14 @@
 class Edge2D
 {
 public: 
-    QPointF from, to;
-
-    float GetLength();
+    Edge2D() = default;
+    Edge2D(QPointF from, QPointF to) : m_From{ from }, m_To(to){};
+    QPointF m_From, m_To;
 
     bool operator== (const Edge2D& rhs)const
     {
-        return from == rhs.from && to == rhs.to;
+        return (m_From == rhs.m_From && m_To == rhs.m_To) ||
+            (m_To == rhs.m_From && m_From == rhs.m_To);
     }
 };
 

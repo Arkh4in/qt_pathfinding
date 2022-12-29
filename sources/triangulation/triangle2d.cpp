@@ -70,6 +70,12 @@ Triangle2D::Triangle2D(QPointF a, QPointF b, QPointF c)
     m_Points[0] = a;
     m_Points[1] = b;
     m_Points[2] = c;
+
+    m_Edges[0] = Edge2D(a, b);
+    m_Edges[1] = Edge2D(b, c);
+    m_Edges[2] = Edge2D(c, a);
+
+
     m_CircumscribedCircleCenter = GetCircumscribedCircleCenter();
     
     QPointF radiusVector = m_CircumscribedCircleCenter - m_Points[0];

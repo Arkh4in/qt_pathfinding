@@ -8,10 +8,10 @@
 
 void Graph2D::InitTriangulation()
 {
-    /*QPointF point = m_Vertice.pop_back();
+    QPointF point = m_Vertice.pop();
     m_Triangles.append(Triangle2D(point, m_SuperTriangle.GetA(), m_SuperTriangle.GetB()));
     m_Triangles.append(Triangle2D(point, m_SuperTriangle.GetB(), m_SuperTriangle.GetC()));
-    m_Triangles.append(Triangle2D(point, m_SuperTriangle.GetC(), m_SuperTriangle.GetA()));*/
+    m_Triangles.append(Triangle2D(point, m_SuperTriangle.GetC(), m_SuperTriangle.GetA()));
 }
 
 void Graph2D::RemoveSuperTriangle()
@@ -61,7 +61,7 @@ void Graph2D::Triangulate()
     //    }
     //    while (toRemove.size() > 0)
     //    {
-    //        m_Triangles.removeOne(toRemove.pop_back());
+    //        m_Triangles.removeOne(toRemove.pop());
     //    }
     //}
     //RemoveSuperTriangle();
