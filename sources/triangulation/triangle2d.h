@@ -27,6 +27,13 @@ public:
         return rhs.Contains(m_A) && rhs.Contains(m_B) && rhs.Contains(m_C);
     }
 
+    bool operator!= (const Triangle2D& rhs)const
+    {
+        return !rhs.Contains(m_A) 
+            || !rhs.Contains(m_B) 
+            || !rhs.Contains(m_C);
+    }
+
 private : 
     Edge2D m_AB;
     Edge2D m_BC;

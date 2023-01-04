@@ -33,14 +33,19 @@ void Graph2D::RemoveSuperTriangle()
 
 Graph2D::Graph2D(QRect boundaries) : 
     m_SuperTriangle(QPointF(boundaries.left() - boundaries.width(), boundaries.top() - boundaries.height()),
-    QPointF(boundaries.left(), boundaries.bottom() + 2* boundaries.height()),
-    QPointF(boundaries.right() + 2* boundaries.width(), boundaries.top()))
+        QPointF(boundaries.left(), boundaries.bottom() + 2 * boundaries.height()),
+        QPointF(boundaries.right() + 2 * boundaries.width(), boundaries.top()))
 {
     m_Boundaries = boundaries;
-    m_Vertice.push(boundaries.topLeft());
+    /*m_Vertice.push(boundaries.topLeft());
     m_Vertice.push(boundaries.bottomLeft());
     m_Vertice.push(boundaries.topRight());
-    m_Vertice.push(boundaries.bottomRight());
+    m_Vertice.push(boundaries.bottomRight());*/
+
+    //----------------
+
+    m_SuperTriangle = Triangle2D(QPointF(0, 0), QPointF(10, 0), QPointF(4, 10));
+
 }
 
 void Graph2D::AddRectangleObstacle(QRect obstacle)
@@ -55,6 +60,7 @@ void Graph2D::AddVertex(QPointF vertex)
 void Graph2D::Triangulate()
 {
     QList<Triangle2D> toRemove;
+
     InitTriangulation();
     while (m_Vertice.size() > 0)
     {
@@ -66,22 +72,33 @@ void Graph2D::Triangulate()
                 toRemove.append(tri);
             }
         }
+
+        //work with edges instead of triangles to remove this complexity
+
+        QList<Edge2D> sharedEdges;
+        for (Triangle2D& tri : toRemove)
+        {
+            AppendIfNewSharedEdge(toRemove, sharedEdges, tri, tri.GetAB());
+            AppendIfNewSharedEdge(toRemove, sharedEdges, tri, tri.GetBC());
+            AppendIfNewSharedEdge(toRemove, sharedEdges, tri, tri.GetCA());
+        }
+
         while (toRemove.size() > 0)
         {
             Triangle2D tri = toRemove.takeLast();
             m_Triangles.removeOne(tri);
 
-            if (!IsEdgeSharedWithBadTriangle(toRemove, tri.GetAB()))
+            if (!sharedEdges.contains(tri.GetAB()))
             {
                 m_Triangles.append(Triangle2D(p, tri.GetA(), tri.GetB()));
             }
 
-            if (!IsEdgeSharedWithBadTriangle(toRemove, tri.GetBC()))
+            if (!sharedEdges.contains(tri.GetBC()))
             {
                 m_Triangles.append(Triangle2D(p, tri.GetB(), tri.GetC()));
             }
 
-            if (!IsEdgeSharedWithBadTriangle(toRemove, tri.GetCA()))
+            if (!sharedEdges.contains(tri.GetCA()))
             {
                 m_Triangles.append(Triangle2D(p, tri.GetC(), tri.GetA()));
             }
@@ -90,16 +107,20 @@ void Graph2D::Triangulate()
     RemoveSuperTriangle();
 }
 
-bool Graph2D::IsEdgeSharedWithBadTriangle(QList<Triangle2D>& triangles, Edge2D edge)
+void Graph2D::AppendIfNewSharedEdge(QList<Triangle2D>& triangles, QList<Edge2D>& badEdges, Triangle2D triangle, Edge2D edge)
 {
+    for (const Edge2D& e : badEdges)
+    {
+        if(edge == e)
+            return;
+    }
     bool isContained = false;
     for (const Triangle2D& t : triangles)
     {
-        if (t.Contains(edge))
+        if (t != triangle && t.Contains(edge))
         {
-            isContained = true;
-            return true;
+            badEdges.append(edge);
+            return;
         }
     }
-    return false;
 }

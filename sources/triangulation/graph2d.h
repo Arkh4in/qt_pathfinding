@@ -21,7 +21,7 @@ private:
 
     void InitTriangulation();
     void RemoveSuperTriangle();
-    bool IsEdgeSharedWithBadTriangle(QList<Triangle2D>& triangles, Edge2D edge);
+    void AppendIfNewSharedEdge(QList<Triangle2D>& triangles, QList<Edge2D>& badEdges, Triangle2D triangle, Edge2D edge);
 
 public:
     Graph2D(QRect boundaries);
