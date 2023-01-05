@@ -11,8 +11,6 @@ class QRect;
 class Graph2D
 {
 private: 
-    QRect m_Boundaries;
-
     QList<Triangle2D> m_Triangles;
     QStack<QPointF> m_Vertice;
     QList<Edge2D> m_ConstraintedEdges;

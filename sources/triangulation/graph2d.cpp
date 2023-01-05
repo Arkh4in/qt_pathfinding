@@ -36,15 +36,10 @@ Graph2D::Graph2D(QRect boundaries) :
         QPointF(boundaries.left(), boundaries.bottom() + 2 * boundaries.height()),
         QPointF(boundaries.right() + 2 * boundaries.width(), boundaries.top()))
 {
-    m_Boundaries = boundaries;
-    /*m_Vertice.push(boundaries.topLeft());
+    m_Vertice.push(boundaries.topLeft());
     m_Vertice.push(boundaries.bottomLeft());
     m_Vertice.push(boundaries.topRight());
-    m_Vertice.push(boundaries.bottomRight());*/
-
-    //----------------
-
-    m_SuperTriangle = Triangle2D(QPointF(0, 0), QPointF(10, 0), QPointF(4, 10));
+    m_Vertice.push(boundaries.bottomRight());
 
 }
 
@@ -73,8 +68,7 @@ void Graph2D::Triangulate()
             }
         }
 
-        //work with edges instead of triangles to remove this complexity
-
+        //TODO: work with edges instead of triangles to remove this complexity
         QList<Edge2D> sharedEdges;
         for (Triangle2D& tri : toRemove)
         {
