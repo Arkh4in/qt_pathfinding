@@ -2,7 +2,7 @@
 
 namespace Triangulation
 {
-    class Vertex2D
+    class HalfEdge
     {
     };
 }

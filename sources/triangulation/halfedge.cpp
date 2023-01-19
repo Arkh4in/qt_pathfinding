@@ -1,5 +1,4 @@
-#include "edge2d.h"
-
+#include "halfedge.h"
 namespace Triangulation
 {
 }

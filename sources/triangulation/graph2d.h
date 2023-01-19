@@ -4,29 +4,33 @@
 
 #include "triangle2d.h"
 
-class Triangle2D;
-class Edge2D;
 class QRect;
 
-class Graph2D
+namespace Triangulation
 {
-private: 
-    QList<Triangle2D> m_Triangles;
-    QStack<QPointF> m_Vertice;
-    QList<Edge2D> m_ConstraintedEdges;
+    class Triangle2D;
+    class Edge2D;
 
-    Triangle2D m_SuperTriangle;
+    class Graph2D
+    {
+    private:
+        QList<Triangle2D> m_Triangles;
+        QStack<QPointF> m_Vertice;
+        QList<Edge2D> m_ConstraintedEdges;
 
-    void InitTriangulation();
-    void RemoveSuperTriangle();
-    void AppendIfNewSharedEdge(QList<Triangle2D>& triangles, QList<Edge2D>& badEdges, Triangle2D triangle, Edge2D edge);
+        Triangle2D m_SuperTriangle;
 
-public:
-    Graph2D(QRect boundaries);
+        void InitTriangulation();
+        void RemoveSuperTriangle();
+        void AppendIfNewSharedEdge(QList<Triangle2D>& triangles, QList<Edge2D>& badEdges, Triangle2D triangle, Edge2D edge);
 
-    void AddRectangleObstacle(QRect obstacle);
-    void AddVertex(QPointF vertex);
+    public:
+        Graph2D(QRect boundaries);
 
-    void Triangulate();
-};
+        void AddRectangleObstacle(QRect obstacle);
+        void AddVertex(QPointF vertex);
+
+        void Triangulate();
+    };
+}
 

@@ -10,7 +10,7 @@
 int main(int argc, char *argv[])
 {
     QRect rect(QPoint(0, 0), QPoint(10, 10));
-    Graph2D graph(rect);
+    Triangulation::Graph2D graph(rect);
 
     graph.AddVertex(QPointF(3.1f, 5.1f));
     graph.AddVertex(QPointF(2.2f, 2.2f));
