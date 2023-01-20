@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pathfinding", "src\pathfinding.vcxproj", "{31A1BB22-FB99-48EC-A2A7-E46F1393BE9D}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test", "test\test.vcxproj", "{7570428D-AE4A-4610-8AAA-676B2D628BB8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{31A1BB22-FB99-48EC-A2A7-E46F1393BE9D} = {31A1BB22-FB99-48EC-A2A7-E46F1393BE9D}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
