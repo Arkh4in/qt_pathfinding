@@ -3,6 +3,7 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="include\catch_amalgamated.cpp" />
+    <ClCompile Include="test_triangulation\test_triangle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\catch_amalgamated.hpp" />

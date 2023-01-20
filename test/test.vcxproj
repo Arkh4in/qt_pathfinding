@@ -119,10 +119,13 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalOptions>/Zc:hiddenFriend- %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>E:\Work\GitProjects\qt_pathfinding\src;E:\Work\GitProjects\qt_pathfinding\test\include;F:\Qt\6.5.0\msvc2019_64\bin;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>F:\Qt\6.5.0\msvc2019_64\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -144,9 +147,15 @@
   <ItemGroup>
     <ClCompile Include="include\catch_amalgamated.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="test_triangulation\test_triangle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\catch_amalgamated.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\src\pathfinding.vcxproj">
+      <Project>{31a1bb22-fb99-48ec-a2a7-e46f1393be9d}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
