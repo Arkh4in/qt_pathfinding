@@ -1,6 +1,7 @@
 #include <QPointF>
 
 #include "catch_amalgamated.hpp"
+
 #include "triangulation\triangle2d.h"
 
 

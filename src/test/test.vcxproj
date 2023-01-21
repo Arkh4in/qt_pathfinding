@@ -66,6 +66,9 @@
       <AdditionalOptions>/Zc:hiddenFriend- %(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>E:\Work\GitProjects\qt_pathfinding\src\core;E:\Work\GitProjects\qt_pathfinding\src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
+    <Link>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
     <ClCompile>
@@ -97,6 +100,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\catch_amalgamated.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\core\core.vcxproj">
+      <Project>{622b5ea0-15e3-4893-ac57-630b767b9658}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
