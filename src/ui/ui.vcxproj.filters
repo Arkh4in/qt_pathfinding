@@ -31,30 +31,8 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ui\menumodel.cpp" />
-    <ClCompile Include="triangulation\graph2d.cpp" />
-    <ClCompile Include="triangulation\vertex2d.cpp" />
-    <ClCompile Include="triangulation\edge2d.cpp" />
-    <ClCompile Include="triangulation\triangle2d.cpp" />
-    <ClCompile Include="triangulation\halfedge.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ui\main.qml" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="triangulation\graph2d.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="triangulation\vertex2d.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="triangulation\edge2d.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="triangulation\triangle2d.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="triangulation\halfedge.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>
