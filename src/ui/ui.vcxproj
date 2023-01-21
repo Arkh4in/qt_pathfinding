@@ -57,13 +57,13 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <IncludePath>F:\Qt\6.5.0\msvc2019_64\include\QtQuick;F:\Qt\6.5.0\msvc2019_64\include\QtOpenGL;F:\Qt\6.5.0\msvc2019_64\include\QtGui;F:\Qt\6.5.0\msvc2019_64\include\QtNetwork;F:\Qt\6.5.0\msvc2019_64\include\QtHelp;F:\Qt\6.5.0\msvc2019_64\include;F:\Qt\6.5.0\msvc2019_64\include\QtCore;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)bin\$(ProjectName)\$(Platform)\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)bin\$(ProjectName)\$(Platform)\Intermediate\$(Configuration)\</IntDir>
+    <IntDir>$(SolutionDir)bin\$(ProjectName)\Intermediate\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>E:\Work\GitProjects\qt_pathfinding\src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\Work\GitProjects\qt_pathfinding\src\core;E:\Work\GitProjects\qt_pathfinding\src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
@@ -99,23 +99,11 @@
     <QtMoc Include="ui\menumodel.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="triangulation\halfedge.cpp" />
-    <ClCompile Include="triangulation\triangle2d.cpp" />
-    <ClCompile Include="triangulation\edge2d.cpp" />
-    <ClCompile Include="triangulation\graph2d.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ui\menumodel.cpp" />
-    <ClCompile Include="triangulation\vertex2d.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ui\main.qml" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="triangulation\halfedge.h" />
-    <ClInclude Include="triangulation\triangle2d.h" />
-    <ClInclude Include="triangulation\edge2d.h" />
-    <ClInclude Include="triangulation\graph2d.h" />
-    <ClInclude Include="triangulation\vertex2d.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

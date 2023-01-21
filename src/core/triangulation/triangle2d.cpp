@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include <stdexcept>
 
 #include "triangle2d.h"

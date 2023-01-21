@@ -3,7 +3,8 @@
 #include "catch_amalgamated.hpp"
 #include "triangulation\triangle2d.h"
 
-TEST_CASE("compare 2 triangles with same points", "[vector]") 
+
+TEST_CASE("compare 2 triangles with same points", "[vector]")
 {
     QPointF p0 = QPointF(0, 0);
     QPointF p1 = QPointF(0, 1);
