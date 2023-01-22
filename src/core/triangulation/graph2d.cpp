@@ -51,7 +51,8 @@ namespace Triangulation
 
     void Graph2D::AddVertex(QPointF vertex)
     {
-        m_Vertice.append(vertex);
+        if(!m_Vertice.contains(vertex))
+            m_Vertice.append(vertex);
     }
 
     void Graph2D::Triangulate()
@@ -119,5 +120,20 @@ namespace Triangulation
                 return;
             }
         }
+    }
+
+    QList<Edge2D> Graph2D::GetEdges()
+    {
+        QList<Edge2D> edges;
+        for (Triangle2D& tri : m_Triangles)
+        {
+            if(!edges.contains(tri.GetAB()))
+                edges.append(tri.GetAB());
+            if (!edges.contains(tri.GetBC()))
+                edges.append(tri.GetBC());
+            if (!edges.contains(tri.GetCA()))
+                edges.append(tri.GetCA());
+        }
+        return edges;
     }
 }

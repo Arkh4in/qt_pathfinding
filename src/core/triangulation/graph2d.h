@@ -31,6 +31,8 @@ namespace Triangulation
         void AddVertex(QPointF vertex);
 
         void Triangulate();
+        QList<Edge2D> GetEdges();
+
     };
 }
 

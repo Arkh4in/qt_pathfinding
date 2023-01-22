@@ -15,6 +15,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test", "src\test\test.vcxpr
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "core", "src\core\core.vcxproj", "{622B5EA0-15E3-4893-AC57-630B767B9658}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qt_widget_test", "src\qt_widget_test\qt_widget_test.vcxproj", "{2705F55F-1E88-4416-8D79-36CF0FB69190}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -41,6 +43,12 @@ Global
 		{622B5EA0-15E3-4893-AC57-630B767B9658}.Release|x64.ActiveCfg = Release|x64
 		{622B5EA0-15E3-4893-AC57-630B767B9658}.Release|x64.Build.0 = Release|x64
 		{622B5EA0-15E3-4893-AC57-630B767B9658}.Release|x86.ActiveCfg = Release|x64
+		{2705F55F-1E88-4416-8D79-36CF0FB69190}.Debug|x64.ActiveCfg = Debug|x64
+		{2705F55F-1E88-4416-8D79-36CF0FB69190}.Debug|x64.Build.0 = Debug|x64
+		{2705F55F-1E88-4416-8D79-36CF0FB69190}.Debug|x86.ActiveCfg = Debug|x64
+		{2705F55F-1E88-4416-8D79-36CF0FB69190}.Release|x64.ActiveCfg = Release|x64
+		{2705F55F-1E88-4416-8D79-36CF0FB69190}.Release|x64.Build.0 = Release|x64
+		{2705F55F-1E88-4416-8D79-36CF0FB69190}.Release|x86.ActiveCfg = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
